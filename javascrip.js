@@ -1,8 +1,9 @@
 const dialog = document.querySelector("dialog");
 const showButton = document.querySelector("dialog + button");
-const closeButton = document.querySelector("dialog button");
+const closeButton = document.querySelector("#closePad");
 const addBookButton = document.querySelector("#addBook");
 const newBookContainer = document.getElementById("newBook");
+const removeBook = document.getElementById("#deletButton");
 
 showButton.addEventListener("click", () => {
     dialog.showModal();
@@ -26,11 +27,13 @@ function Book(title, author, pages, currentPage) {
         var card = document.createElement("div");
         card.classList.add("cards");
         card.innerHTML = `
-            <p>${this.title} by ${this.author},<p>
-            <p>${pages} pages <p>
-            <p>${this.read()}<p>
+            <p>${this.title} by ${this.author},</p>
+            <p>${pages} pages </p>
+            <p>${this.read()}</p>
+            <button id"deletButton">Remove Book</button>
         `;
         newBookContainer.appendChild(card)
+
     }
 }     
 
