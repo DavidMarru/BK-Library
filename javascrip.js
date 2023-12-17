@@ -3,7 +3,6 @@ const showButton = document.querySelector("dialog + button");
 const closeButton = document.querySelector("#closePad");
 const addBookButton = document.querySelector("#addBook");
 const newBookContainer = document.getElementById("newBook");
-const removeBook = document.getElementById("#deletButton");
 
 showButton.addEventListener("click", () => {
     dialog.showModal();
@@ -28,16 +27,24 @@ function Book(title, author, pages, currentPage) {
         card.classList.add("cards");
         card.innerHTML = `
             <p>${this.title} by ${this.author},</p>
-            <p>${pages} pages </p>
+            <p>${this.pages} pages </p>
             <p>${this.read()}</p>
-            <button id"deletButton">Remove Book</button>
+            <button id="deleteButton">Remove Book</button>
+            <button id="completed">Book completed</button>
         `;
-        newBookContainer.appendChild(card)
+        newBookContainer.appendChild(card);
 
-    }
-}     
+        card.querySelector("#deleteButton").addEventListener("click", () => {
+            var userConfirmed = window.confirm("Are you sure you want to remove this book from your library?");
+            
+            if (userConfirmed) {
+                card.remove();
+            }
+        });
+    };
+}
 
-addBook.addEventListener("click", function () {
+addBookButton.addEventListener("click", function () {
     var title = document.querySelector("#title").value;
     var author = document.querySelector("#author").value;
     var pages = document.querySelector("#totalPages").value;
@@ -47,4 +54,3 @@ addBook.addEventListener("click", function () {
     newBook.createCard();
     dialog.close();
 });
-
