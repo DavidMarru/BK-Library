@@ -17,17 +17,25 @@ function Book(title, author, pages, currentPage) {
     this.author = author;
     this.pages = pages;
     this.currentPage = currentPage;
+    this.completed = false;
 
     this.read = function () {
-        return pages === currentPage ? "Book Completed" : "Not Completed";
+        if (this.pages === this.currentPage) {
+            return "Book Completed";
+        } else if (this.completed) {
+            return "Book Completed";
+        } else {
+            return "Not Completed";
+        }
     };
 
-    this.createCard = function() {
+    this.createCard = function () {
         var card = document.createElement("div");
         card.classList.add("cards");
         card.innerHTML = `
-            <p>${this.title} by ${this.author},</p>
-            <p>${this.pages} pages </p>
+            <p>Book Title ${this.title}</p>
+            <p>by ${this.author},</p>
+            <p>${this.pages} Total pages, Pages read ${this.currentPage}</p>
             <p>${this.read()}</p>
             <button id="deleteButton">Remove Book</button>
             <button id="completed">Book completed</button>
@@ -36,9 +44,20 @@ function Book(title, author, pages, currentPage) {
 
         card.querySelector("#deleteButton").addEventListener("click", () => {
             var userConfirmed = window.confirm("Are you sure you want to remove this book from your library?");
-            
+
             if (userConfirmed) {
                 card.remove();
+            }
+        });
+
+        card.querySelector("#completed").addEventListener("click", () => {
+            var markCompleted = window.confirm("Want to mark this book as Read");
+
+            if (markCompleted) {
+                this.completed = true;
+                this.currentPage = this.pages;
+                card.querySelector("p:nth-child(4)").innerText = this.read();
+                card.querySelector("p:nth-child(3)").innerText = "";
             }
         });
     };
