@@ -1,32 +1,106 @@
-::backdrop {
-    background-image: linear-gradient(
-        45deg,
-        magenta,
-        rebeccapurple,
-        dodgerblue,
-        green
-      );
-  }  
+body {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+}
 
-  .openDialog{
-    display: flex;
-    flex-direction: column;
-  }
+#inputInfo{
+  width: 100px;
+  height: 70px;
+}
 
-  .cards{
-    height: 200px;
-    width: 270px;
-    outline: 2px solid black;
-    color: black;
-    font-size: 1rem;
-  }
+header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  height: 50px;
+  width: 100vw;
+  padding: 0 20px;
 
-  .newBookContainer{
-    display: flex;
-    border: 2px solid red;
-  }
+}
 
-  .cards button{
-    border: none;
-    background:none;
-  }
+.main-content{
+  display: flex;
+}
+
+.main-behind{
+}
+
+.navbar {
+  display: flex;
+  justify-content:space-evenly;
+  align-content: center;
+  padding: 10px;
+  width: 100%;
+}
+
+.nav-list.show{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  position:absolute;
+  background-color: #333;
+  margin: 0;
+  padding: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  height: 100%;
+}
+
+
+.menu-icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items:center;
+  flex: 1;
+  cursor: pointer;
+  width: 50px;
+}
+
+.bar {
+  min-width: 25px;
+  height: 3px;
+  background-color: #fff;
+  margin: 3px 0;
+  transition: 0.4s;
+}
+
+.log {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  width: 80px;
+  flex: 10;
+}
+
+.log h1 {
+  margin: 0;
+
+}
+
+.nav-list {
+  list-style-type: none;
+  display: none;
+}
+
+.nav-list li {
+  margin: 0 15px;
+}
+
+.nav-list a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.nav-list.show {
+  display: flex;
+}
