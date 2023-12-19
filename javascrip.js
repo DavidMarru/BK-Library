@@ -3,8 +3,8 @@ const showButton = document.querySelector("#inputInfo");
 const closeButton = document.querySelector("#closePad");
 const addBookButton = document.querySelector("#addBook");
 const newBookContainer = document.getElementById("newBook");
-const menuIcon = document.getElementById('menu-icon');
-const navList = document.getElementById('nav-list');
+const menuIcon = document.getElementById('menu-toggle');
+const menuList = document.getElementById('menu');
 
 showButton.addEventListener("click", () => {
     dialog.showModal();
@@ -74,12 +74,12 @@ addBookButton.addEventListener("click", function () {
     var newBook = new Book(title, author, pages, currentPage);
     newBook.createCard();
     dialog.close();
-    navList.classList.remove('show');
+    menuList.classList.remove('show');
 });
 
 
 document.addEventListener('DOMContentLoaded', function () {
     menuIcon.addEventListener('click', function () {
-        navList.classList.toggle('show');
+        menuList.classList.toggle('show');
     });
 });
