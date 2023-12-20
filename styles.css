@@ -2,7 +2,6 @@ html,body {
   width: 100vw;
   height: 100vh;
   margin: 0;
-
 }
 
 body {
@@ -11,27 +10,6 @@ body {
   font-family: 'Arial', sans-serif;
   overflow: hidden;
   background: #9d9d9d;}
-
-.nav-list li button{
-  padding: 0;
-  background: white;
-  border-radius: 0.2rem;
-  border: none;
-  color: black;
-  white-space: nowrap;
-}
-
-.nav-list.show li button p{
-  font-size: 1rem;
-  font-weight:bolder;
-  margin: 1px 5px;
-}
-
-.nav-list li button p{
-  font-size: 1rem;
-  font-weight:bolder;
-  margin: 1px 5px;
-}
 
 
 header{
@@ -59,9 +37,6 @@ header{
   padding: 10px;
   width: 100vw;
 }
-
-
-
 
 .menu-icon {
   display: flex;
@@ -91,7 +66,7 @@ header{
 .log h1 {
   margin: 0;
   font-size: 1rem;
-
+  color: #fff;
 }
 
 
@@ -106,6 +81,8 @@ header{
   text-decoration: none;
   font-weight: bold;
   font-size: 18px;
+  color: rgb(255, 255, 255);
+
 }
 
 #inputInfo{
@@ -113,23 +90,24 @@ header{
   color: #333;
 }
 
-.nav-list li *{
+.nav-list li {
   position: relative;;
   right: 100px;
   opacity: 0; 
   font-size: 20px;
   color: black;
   cursor: pointer;
-  transition: right 5s ease-in, right 1s ease-out ,opacity 1.5s ease-in-out;  
+  transition: right 1s ease-out ,opacity 1.5s ease-in-out;  
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
 }
 
-.nav-list.show li *{
+.nav-list.show li {
   right: 0;
   font-size: 20px;
   opacity: 1;
   cursor: pointer;
+  transition: right 1.2s ease-out;  
 }
 
 .nav-list { 
@@ -139,7 +117,7 @@ header{
   left: -100px;
   height: 100vh;
   background-color: #333;
-  transition: 1.2s ease-in-out;
+  transition: 1s ease-in-out;
 }
 
 .nav-list.show {
@@ -154,9 +132,10 @@ header{
   margin: 0;
   height: 100vh;
   width: 9rem;
+  transition: 0.8s ease-in-out;
 }
 
-.nav-list li button{
+.nav-list.show li button, .nav-list li button{
   padding: 0;
   background: white;
   border-radius: 0.2rem;
@@ -165,14 +144,9 @@ header{
   white-space: nowrap;
 }
 
-.nav-list.show li button p{
+.nav-list.show li button p,.nav-list li button p{
   font-size: 1rem;
   font-weight:bolder;
   margin: 1px 5px;
 }
 
-.nav-list li button p{
-  font-size: 1rem;
-  font-weight:bolder;
-  margin: 1px 5px;
-}
