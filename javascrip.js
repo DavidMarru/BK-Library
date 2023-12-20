@@ -83,3 +83,13 @@ document.addEventListener('DOMContentLoaded', function () {
         menuList.classList.toggle('show');
     });
 });
+
+
+showButton.addEventListener("click", () => {
+    dialog.classList.add("show");
+  });
+  
+  closeButton.addEventListener("click", () => {
+    dialog.classList.remove("show");
+  });
+  
