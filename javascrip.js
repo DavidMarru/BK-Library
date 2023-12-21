@@ -8,14 +8,16 @@ const menuList = document.getElementById('menu');
 
 showDialog.addEventListener("click", () => {
     dialog.showModal();
+    dialog.setAttribute("show","");
+
 });
+
 
 closeButton.addEventListener("click", () => {
     dialog.setAttribute(`closing`, "");
     dialog.addEventListener("animationend", () => {
         dialog.removeAttribute (`closing`);
         dialog.removeAttribute (`show`);
-
         dialog.close();
     },{once:true})
 });
@@ -96,8 +98,5 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-showDialog.addEventListener("click", () => {
-    dialog.setAttribute("show","");
-  });
   
   

@@ -27,6 +27,12 @@ header{
   width: 100%;
   height: 100%;
   position: relative;
+  top: 0; left: 0;
+  padding: 1rem;
+}
+
+@media screen 932px {
+  
 }
 .navbar {
   display: flex;
@@ -111,6 +117,7 @@ header{
   position: absolute;
   margin: 0; padding: 0;border: none;
   width: 0px;
+  top: 0;
   left: -100px;
   height: 100vh;
   background-color: #333;
@@ -165,22 +172,20 @@ header{
   }
 }
 
-dialog {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-
+dialog[show],dialog[closing] {
+  position: relative;
+  top: 5%;
+  left: 2.5%;
+  width: fit-content;
+  margin: 10px;
+  padding: 20px;
+  border: 0.5rem solid #333;
+  background-color: #9d9d9d;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
 dialog[show] {
   display: block;
-  position: fixed;
-  top: 0%;
-  left: 0%;
-  padding: 20px;
-  border: 1px solid #333;
-  background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   opacity: 1;
   pointer-events: visible;
   animation: fadeIn 1s ease-in-out forwards;
@@ -189,13 +194,11 @@ dialog[show] {
 dialog[closing] {
   display: block;
   position: fixed;
-  top: 0%;
-  left: 0%;
-  padding: 20px;
-  border: 1px solid #333;
-  background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   opacity: 1;
   pointer-events: visible;
   animation: fadeOut 1s ease-in-out forwards;
+}
+
+dialog[show] {
+  font-size: 100%;
 }
