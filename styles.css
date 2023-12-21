@@ -9,14 +9,15 @@ body {
   flex-direction: column;
   font-family: 'Arial', sans-serif;
   overflow: hidden;
-  background: #9d9d9d;}
+  background: hsl(200, 71%, 12%, 0.9);
+}
 
 
 header{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #333;
+  background-color: #092635;
   height: 50px;
   width: 100vw;
 
@@ -29,6 +30,14 @@ header{
   position: relative;
   top: 0; left: 0;
   padding: 1rem;
+}
+
+.cards{
+  background-color: hsla(146, 17%, 45%, 1);
+  box-shadow: 0 0 5px 5px hsla(146, 17%, 45%, 0.50);
+
+  padding: 1rem;
+  border-radius: 15px;
 }
 
 .navbar {
@@ -52,10 +61,14 @@ header{
 .bar {
   min-width: 25px;
   height: 3px;
-  background-color: #fff;
+  background-color: #9d9d9d;
   margin: 3px 0;
+  transition: 0.25s ease-in-out;
 }
 
+.menu-icon:hover .bar {
+  background-color: #5C8374;
+}
 .log {
   display: flex;
   justify-content: center;
@@ -66,7 +79,7 @@ header{
 .log h1 {
   margin: 0;
   font-size: 1rem;
-  color: #fff;
+  color: #9d9d9d;
 }
 
 
@@ -77,25 +90,37 @@ header{
   line-height: 1.8;
 }
 
-.nav-list a {
+.nav-list a, .nav-list p{
   text-decoration: none;
   font-weight: bold;
   font-size: 18px;
-  color: rgb(255, 255, 255);
-
+  color: #9d9d9d;
+  transition: 0.5s ease-in-out;
+}
+.nav-list.showMenu p:hover ,.nav-list.showMenu a:hover{
+  color: #5C8374;
+}
+.nav-list button{
+  transition: 0.5s ease-in-out;
 }
 
 #inputInfo{
   border: none;
-  color: #333;
+  background-color: #5C8374;
 }
 
+#inputInfo:hover{
+  background-color: #9EC8B9;
+
+}
+.nav-list button{
+  cursor: pointer;
+}
 .nav-list li {
   position: relative;;
   right: 100px;
   opacity: 0; 
   font-size: 20px;
-  color: black;
   cursor: pointer;
   transition: right 1s ease-in-out ,opacity 0.5s ease-in-out;  
   overflow: hidden;
@@ -117,7 +142,7 @@ header{
   top: 0;
   left: -100px;
   height: 100vh;
-  background-color: #333;
+  background-color: #092635;
   transition: 1s ease-in-out;
 }
 
@@ -128,8 +153,7 @@ header{
   align-items: flex-start;
   top: 0;
   left: 0;
-  background-color: #333;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.26);
+  background-color: hsl(200, 71%, 12%);
   margin: 0;
   height: 100vh;
   width: 9rem;
@@ -138,10 +162,8 @@ header{
 
 .nav-list.showMenu li button, .nav-list li button{
   padding: 0;
-  background: white;
   border-radius: 0.2rem;
   border: none;
-  color: black;
   white-space: nowrap;
 }
 
