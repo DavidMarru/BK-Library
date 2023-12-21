@@ -31,9 +31,6 @@ header{
   padding: 1rem;
 }
 
-@media screen 932px {
-  
-}
 .navbar {
   display: flex;
   justify-content:space-evenly;
