@@ -1,43 +1,244 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <link rel="stylesheet" href="./styles.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BK library</title>
-</head>
-<body>
-    <header>
-        <div class="navbar">
-            <div class="menu-icon" id="menu-toggle">
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-            </div>
-            <div class="log">
-                <h1>LOGOOOO</h1>
-            </div>
-        </div>
-    </header>
-    <div class="main-content">
-    <ul class="nav-list" id="menu">
-        <li><button id="inputInfo"><p>Add New Book</p></button></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Services</a></li>
-        <li><a href="#">Contact</a></li>
-    </ul>
-        <dialog>
-            <p>Glad to have you back! What's the new story you bring</p>
-            <input id="title" type="text" placeholder="Book Title:" ><br>
-            <input id="author" type="text" placeholder="Author:" ><br>
-            <input id="totalPages" type="text" placeholder="Total Pages:" ><br>
-            <input id="pagesRead" type="text" placeholder="Page read:" ><br>
-            <button id="addBook">Add Book</button>
-            <button id="closePad">Close Note Pad</button>
-        </dialog>
-            <div id="newBook"></div>
-        </div>
-    </div>
-    <script src="./javascrip.js"></script>
-</body>
-</html>
+html,body {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+  }
+  
+  body {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Arial', sans-serif;
+    overflow: hidden;
+    background: #9d9d9d;}
+  
+  
+  header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    height: 50px;
+    width: 100vw;
+  
+  }
+  
+  .main-content {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+  .navbar {
+    display: flex;
+    justify-content:space-evenly;
+    align-content: center;
+    padding: 10px;
+    width: 100vw;
+  }
+  
+  .menu-icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+    flex: 1;
+    cursor: pointer;
+    width: 100px;
+  }
+  
+  .bar {
+    min-width: 25px;
+    height: 3px;
+    background-color: #fff;
+    margin: 3px 0;
+  }
+  
+  .log {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 10;
+  }
+  
+  .log h1 {
+    margin: 0;
+    font-size: 1rem;
+    color: #fff;
+  }
+  
+  
+  .nav-list li {
+    display: block;
+    list-style: none;
+    margin: 0 10px;
+    line-height: 1.8;
+  }
+  
+  .nav-list a {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+    color: rgb(255, 255, 255);
+  
+  }
+  
+  #inputInfo{
+    border: none;
+    color: #333;
+  }
+  
+  .nav-list li {
+    position: relative;;
+    right: 100px;
+    opacity: 0; 
+    font-size: 20px;
+    color: black;
+    cursor: pointer;
+    transition: right 1s ease-in-out ,opacity 0.5s ease-in-out;  
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+  }
+  
+  .nav-list.showMenu li {
+    right: 0;
+    font-size: 20px;
+    opacity: 1;
+    cursor: pointer;
+    transition: right 1.1s ease-in-out ,opacity 1.5s ease-in-out;;  
+  }
+  
+  .nav-list { 
+    position: absolute;
+    margin: 0; padding: 0;border: none;
+    width: 0px;
+    left: -100px;
+    height: 100vh;
+    background-color: #333;
+    transition: 1s ease-in-out;
+  }
+  
+  .nav-list.showMenu {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    top: 0;
+    left: 0;
+    background-color: #333;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.26);
+    margin: 0;
+    height: 100vh;
+    width: 9rem;
+    transition: 0.8s ease-in-out;
+  }
+  
+  .nav-list.showMenu li button, .nav-list li button{
+    padding: 0;
+    background: white;
+    border-radius: 0.2rem;
+    border: none;
+    color: black;
+    white-space: nowrap;
+  }
+  
+  .nav-list.showMenu li button p,.nav-list li button p{
+    font-size: 1rem;
+    font-weight:bolder;
+    margin: 1px 5px;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+  
+  dialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+  
+  }
+  
+  dialog[show] {
+    display: block;
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    padding: 20px;
+    border: 1px solid #333;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    opacity: 1;
+    pointer-events: visible;
+    animation: fadeIn 1s ease-in-out forwards;
+  }
+  
+  dialog[closing] {
+    display: block;
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    padding: 20px;
+    border: 1px solid #333;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    opacity: 1;
+    pointer-events: visible;
+    animation: fadeOut 1s ease-in-out forwards;
+  }<!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <link rel="stylesheet" href="./styles.css">
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>BK library</title>
+  </head>
+  <body>
+      <header>
+          <div class="navbar">
+              <div class="menu-icon" id="menu-toggle">
+                  <div class="bar"></div>
+                  <div class="bar"></div>
+                  <div class="bar"></div>
+              </div>
+              <div class="log">
+                  <h1>LOGOOOO</h1>
+              </div>
+          </div>
+      </header>
+      <div class="main-content">
+      <ul class="nav-list" id="menu">
+          <li><button id="inputInfo"><p>Add New Book</p></button></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Services</a></li>
+          <li><a href="#">Contact</a></li>
+      </ul>
+          <dialog>
+              <p>Glad to have you back! What's the new story you bring</p>
+              <input id="title" type="text" placeholder="Book Title:" ><br>
+              <input id="author" type="text" placeholder="Author:" ><br>
+              <input id="totalPages" type="text" placeholder="Total Pages:" ><br>
+              <input id="pagesRead" type="text" placeholder="Page read:" ><br>
+              <button id="addBook">Add Book</button>
+              <button id="closePad">Close Note Pad</button>
+          </dialog>
+              <div id="newBook"></div>
+          </div>
+      </div>
+      <script src="./javascrip.js"></script>
+  </body>
+  </html>
+  

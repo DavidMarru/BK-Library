@@ -1,17 +1,23 @@
 const dialog = document.querySelector("dialog");
-const showButton = document.querySelector("#inputInfo");
+const showDialog = document.querySelector("#inputInfo");
 const closeButton = document.querySelector("#closePad");
 const addBookButton = document.querySelector("#addBook");
 const newBookContainer = document.getElementById("newBook");
 const menuIcon = document.getElementById('menu-toggle');
 const menuList = document.getElementById('menu');
 
-showButton.addEventListener("click", () => {
+showDialog.addEventListener("click", () => {
     dialog.showModal();
 });
 
 closeButton.addEventListener("click", () => {
-    dialog.close();
+    dialog.setAttribute(`closing`, "");
+    dialog.addEventListener("animationend", () => {
+        dialog.removeAttribute (`closing`);
+        dialog.removeAttribute (`show`);
+
+        dialog.close();
+    },{once:true})
 });
 
 function Book(title, author, pages, currentPage) {
@@ -73,23 +79,25 @@ addBookButton.addEventListener("click", function () {
 
     var newBook = new Book(title, author, pages, currentPage);
     newBook.createCard();
-    dialog.close();
-    menuList.classList.remove('show');
+    dialog.setAttribute(`closing`, "");
+    dialog.addEventListener("animationend", () => {
+        dialog.removeAttribute (`closing`);
+        dialog.removeAttribute (`show`);
+        dialog.close();
+    },{once:true})
+    menuList.classList.toggle('showMenu');
 });
 
 
 document.addEventListener('DOMContentLoaded', function () {
     menuIcon.addEventListener('click', function () {
-        menuList.classList.toggle('show');
+        menuList.classList.toggle('showMenu');
     });
 });
 
 
-showButton.addEventListener("click", () => {
-    dialog.classList.add("show");
+showDialog.addEventListener("click", () => {
+    dialog.setAttribute("show","");
   });
   
-  closeButton.addEventListener("click", () => {
-    dialog.classList.remove("show");
-  });
   

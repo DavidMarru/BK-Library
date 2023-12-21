@@ -27,8 +27,6 @@ header{
   width: 100%;
   height: 100%;
   position: relative;
-  top: 0;
-  left: 0;
 }
 .navbar {
   display: flex;
@@ -101,7 +99,7 @@ header{
   clip: rect(0, 0, 0, 0);
 }
 
-.nav-list.show li {
+.nav-list.showMenu li {
   right: 0;
   font-size: 20px;
   opacity: 1;
@@ -119,7 +117,7 @@ header{
   transition: 1s ease-in-out;
 }
 
-.nav-list.show {
+.nav-list.showMenu {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -134,7 +132,7 @@ header{
   transition: 0.8s ease-in-out;
 }
 
-.nav-list.show li button, .nav-list li button{
+.nav-list.showMenu li button, .nav-list li button{
   padding: 0;
   background: white;
   border-radius: 0.2rem;
@@ -143,29 +141,61 @@ header{
   white-space: nowrap;
 }
 
-.nav-list.show li button p,.nav-list li button p{
+.nav-list.showMenu li button p,.nav-list li button p{
   font-size: 1rem;
   font-weight:bolder;
   margin: 1px 5px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
 
 dialog {
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+
+}
+
+dialog[show] {
+  display: block;
+  position: fixed;
+  top: 0%;
+  left: 0%;
   padding: 20px;
   border: 1px solid #333;
   background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.5s ease, transform 0.5s ease, visibility 0s 0.5s;
+  opacity: 1;
+  pointer-events: visible;
+  animation: fadeIn 1s ease-in-out forwards;
 }
 
-dialog.show {
+dialog[closing] {
+  display: block;
+  position: fixed;
+  top: 0%;
+  left: 0%;
+  padding: 20px;
+  border: 1px solid #333;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   opacity: 1;
-  visibility: visible;
-  transform: translate(-50%, -50%);
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  pointer-events: visible;
+  animation: fadeOut 1s ease-in-out forwards;
 }
