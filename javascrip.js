@@ -41,15 +41,31 @@ function Book(title, author, pages, currentPage) {
 
     this.createCard = function () {
         var card = document.createElement("div");
+
+        var zIndex = document.querySelectorAll('.cards').length + 1;
+        card.style.zIndex = zIndex;
+
+        var topPosition = (document.querySelectorAll('.cards').length + 0) * 60;
+        card.style.zIndex = zIndex;
+        card.style.top = topPosition + 'px';
+
         card.classList.add("cards");
         card.innerHTML = `
-            <p>Book Title ${this.title}</p>
+            <h2>Book Title ${this.title}</h2>
             <p>by ${this.author},</p>
             <p>${this.pages} Total pages, Pages read ${this.currentPage}</p>
             <p>${this.read()}</p>
+            <div class="dialog-buttons">
             <button id="deleteButton">Remove Book</button>
             <button id="completed">Book completed</button>
+            </div>
         `;
+
+        card.querySelector("h2").addEventListener("click", () => {
+           console.log(`clicked`)
+           card.style.zIndex = document.querySelectorAll('.cards').length + 1;
+            });
+    
         newBookContainer.appendChild(card);
 
         card.querySelector("#deleteButton").addEventListener("click", () => {
@@ -96,7 +112,3 @@ document.addEventListener('DOMContentLoaded', function () {
         menuList.classList.toggle('showMenu');
     });
 });
-
-
-  
-  

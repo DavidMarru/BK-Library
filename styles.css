@@ -36,6 +36,7 @@ header{
   display: flex;
   flex-direction: column;
   margin: 1rem;
+  position: relative;
 }
 
 
@@ -46,6 +47,15 @@ header{
   to {
     left: 0;
   }
+}
+.cards {
+  position: absolute;
+  top: 0;
+  transition: top 0.5s ease-in-out;
+}
+
+.cards:nth-child(n + 2) {
+  top: 60px;
 }
 
 .cards {
@@ -61,6 +71,7 @@ header{
   margin-bottom: 1rem;
 }
 
+
 .dialog-buttons {
   display: flex;
   margin: 2px;
@@ -71,6 +82,16 @@ header{
   border: none;
   background: none;
   font-size: 0.8rem;
+}
+
+.cards h2 {
+  font-size: 1rem;
+  margin: 0 0 12px;
+  border-bottom: 1px solid #092635;
+  cursor: pointer;
+  padding:  0 0 12px;
+  width: 100%;
+  text-align: center;
 }
 
 .navbar {
@@ -182,6 +203,7 @@ header{
   height: 100vh;
   margin: 0; padding: 0;border: none;
   top: 0;
+  z-index: 1000;
 }
 .nav-list.showMenu {
   display: flex;
