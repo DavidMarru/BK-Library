@@ -1,32 +1,281 @@
-::backdrop {
-    background-image: linear-gradient(
-        45deg,
-        magenta,
-        rebeccapurple,
-        dodgerblue,
-        green
-      );
-  }  
+body {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+}
 
-  .openDialog{
-    display: flex;
-    flex-direction: column;
-  }
+body {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Arial', sans-serif;
+  overflow: hidden;
+  background: hsl(200, 71%, 12%, 0.9);
+}
 
-  .cards{
-    height: 200px;
-    width: 270px;
-    outline: 2px solid black;
-    color: black;
-    font-size: 1rem;
-  }
 
-  .newBookContainer{
-    display: flex;
-    border: 2px solid red;
-  }
+header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #092635;
+  height: 50px;
+  width: 100vw;
 
-  .cards button{
-    border: none;
-    background:none;
+}
+
+.main-content {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  top: 0; left: 0;
+  padding: 1rem;
+}
+
+.cards-placement {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+  position: relative;
+}
+
+
+@keyframes slidIn {
+  from {
+    left: -100px; 
   }
+  to {
+    left: 0;
+  }
+}
+.cards {
+  position: absolute;
+  top: 0;
+  transition: top 0.5s ease-in-out;
+}
+
+.cards:nth-child(n + 2) {
+  top: 60px;
+}
+
+.cards {
+  background-color: hsla(146, 17%, 45%, 1);
+  box-shadow: 0 0 20px 10px hsla(0, 0%, 0%, 0.50);
+  padding: 1rem;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: slidIn 1s ease-in-out; 
+  width: 13rem;
+  margin-bottom: 1rem;
+}
+
+
+.dialog-buttons {
+  display: flex;
+  margin: 2px;
+}
+
+.cards button ,.cards p{
+  margin: 2px 0;
+  border: none;
+  background: none;
+  font-size: 0.8rem;
+}
+
+.cards h2 {
+  font-size: 1rem;
+  margin: 0 0 12px;
+  border-bottom: 1px solid #092635;
+  cursor: pointer;
+  padding:  0 0 12px;
+  width: 100%;
+  text-align: center;
+}
+
+.navbar {
+  display: flex;
+  justify-content:space-evenly;
+  align-content: center;
+  padding: 10px;
+  width: 100vw;
+}
+
+.menu-icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items:center;
+  flex: 1;
+  cursor: pointer;
+  width: 100px;
+}
+
+.bar {
+  min-width: 25px;
+  height: 3px;
+  background-color: #9d9d9d;
+  margin: 3px 0;
+  transition: 0.25s ease-in-out;
+}
+
+.menu-icon:hover .bar {
+  background-color: #5C8374;
+}
+.log {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 10;
+}
+
+.log h1 {
+  margin: 0;
+  font-size: 1rem;
+  color: #9d9d9d;
+}
+
+
+.nav-list li {
+  display: block;
+  list-style: none;
+  margin: 0 10px;
+  line-height: 1.8;
+}
+
+.nav-list a, .nav-list p{
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 18px;
+  color: #9d9d9d;
+  transition: 0.5s ease-in-out;
+}
+.nav-list.showMenu p:hover ,.nav-list.showMenu a:hover{
+  color: #5C8374;
+}
+.nav-list button{
+  transition: 0.5s ease-in-out;
+}
+
+#inputInfo{
+  border: none;
+  background-color: #5C8374;
+}
+
+#inputInfo:hover{
+  background-color: #9EC8B9;
+
+}
+.nav-list button{
+  cursor: pointer;
+}
+.nav-list li {
+  position: relative;;
+  right: 100px;
+  opacity: 0; 
+  font-size: 20px;
+  cursor: pointer;
+  transition: right 1s ease-in-out ,opacity 0.5s ease-in-out;  
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+}
+
+.nav-list.showMenu li {
+  right: 0;
+  font-size: 20px;
+  opacity: 1;
+  cursor: pointer;
+  transition: right 1.1s ease-in-out ,opacity 1.5s ease-in-out;;  
+}
+
+.nav-list { 
+  position: absolute;
+  width: 0px;
+  left: -100px;
+  transition: 1s ease-in-out;
+  box-shadow: 0 0 0 0  hsl(200, 71%, 12%, 0.8);
+
+}
+
+.nav-list.showMenu , .nav-list {
+  background-color: hsl(200, 71%, 12%);
+  height: 100vh;
+  margin: 0; padding: 0;border: none;
+  top: 0;
+  z-index: 1000;
+}
+.nav-list.showMenu {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  left: 0;
+  width: 9rem;
+  transition: 0.8s ease-in-out;
+  box-shadow: 0 0 50px 20px  hsl(200, 71%, 12%, 0.8);
+
+}
+
+.nav-list.showMenu li button, .nav-list li button{
+  padding: 0;
+  border-radius: 0.2rem;
+  border: none;
+  white-space: nowrap;
+}
+
+.nav-list.showMenu li button p,.nav-list li button p{
+  font-size: 1rem;
+  font-weight:bolder;
+  margin: 1px 5px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+dialog[show],dialog[closing] {
+  position: relative;
+  top: 5%;
+  left: 2.5%;
+  width: fit-content;
+  margin: 10px;
+  padding: 20px;
+  border: 2px solid #071d29;
+  border-radius: 15px;
+  background-color: hsl(200, 71%, 12%, 1);
+  box-shadow: 0 0 10px 10px hsla(0, 0%, 0%, 0.50);
+}
+
+dialog[show] {
+  display: block;
+  opacity: 1;
+  pointer-events: visible;
+  animation: fadeIn 1s ease-in-out forwards;
+}
+
+dialog[closing] {
+  display: block;
+  position: fixed;
+  opacity: 1;
+  pointer-events: visible;
+  animation: fadeOut 1s ease-in-out forwards;
+}
+
+dialog[show] {
+  font-size: 100%;
+}
