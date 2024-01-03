@@ -6,6 +6,28 @@ const newBookContainer = document.getElementById("newBook");
 const menuIcon = document.getElementById('menu-toggle');
 const menuList = document.getElementById('menu');
 
+document.addEventListener('DOMContentLoaded', function () {
+    loadBooks(); 
+});
+
+function loadBooks() {
+    const savedBooksJson = localStorage.getItem('books');
+
+    if (savedBooksJson) {
+        const savedBooks = JSON.parse(savedBooksJson);
+
+        savedBooks.forEach(savedBook => {
+            const { title, author, pages, currentPage, completed } = savedBook;
+            const loadedBook = new Book(title, author, pages, currentPage);
+            loadedBook.completed = completed;
+            loadedBook.createCard();
+        });
+    }
+}
+
+document.addEventListener('DOMContentLoaded', loadBooks);
+
+
 document.addEventListener("click", (event) => {
     const clickedH2 = event.target.closest('.cards h2');
     if (clickedH2) {
@@ -68,7 +90,6 @@ function Book(title, author, pages, currentPage) {
         var topPosition = (document.querySelectorAll('.cards').length + 0) * 60;
         card.style.top = topPosition + 'px';
 
-        // Generate a unique id for the h2
         var BookID = `bookTitle-${Date.now()}`;
         
         card.innerHTML = `
@@ -83,7 +104,6 @@ function Book(title, author, pages, currentPage) {
         `;
 
         card.querySelector(`#${BookID}`).addEventListener("click", (event) => {
-            console.log(`clicked`);
             resetZIndex(event.currentTarget);
         });
 
@@ -137,6 +157,7 @@ addBookButton.addEventListener("click", function () {
         dialog.close();
     }, { once: true });
     menuList.classList.toggle('showMenu');
+    saveBooks();
 });
 
 document.addEventListener('DOMContentLoaded', function () {
